@@ -1,0 +1,341 @@
+@charset "utf-8";
+@import "_inc";
+/*==========================================
+ WORKS
+===========================================*/
+.page_scenery {
+  margin: 80px auto 40px;
+}
+.page_ttl {
+  font-size: 4rem;
+  text-align: center;
+  @include point_mid {
+    font-size: 3rem;
+  }
+  .span {
+    display: inline-block;
+    background: #f33;
+    padding: 0.2em 0.6em 0;
+    width: 320px;
+    position: relative;
+    @include point_mid {
+      width: 260px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0,-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 36px 0 36px 20px;
+      border-color: transparent transparent transparent #fff;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0,-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 36px 20px 36px 0;
+      border-color: transparent #fff transparent transparent;
+    }
+  }
+}
+
+.works {
+  &_bookmark {
+    border: solid 2px #000;
+    position: relative;
+    max-width: 500px;
+    margin: 80px auto 0;
+    @include point_mid {
+      margin: 40px auto 0;
+    }
+    &_ttl {
+      font-size: 2rem;
+      font-weight: 500;
+      text-align: center;
+      background: #fff;
+      position: absolute;
+      width: 80px;
+      top: -16px;
+      left: 50%;
+      transform: translate(-50%,0);
+    }
+    &_list {
+      padding: 30px 4% 20px;
+    }
+    &_item {
+      a {
+        color: #000;
+        &:hover {
+          text-decoration: underline !important;
+        }
+      }
+    }
+  }
+  &_blc {
+    padding: 120px 0;
+    &:nth-child(2n) {
+      background: #eee;
+    }
+    @include point_mid {
+      padding: 80px 0;
+    }
+  }
+  &_txt {
+    margin-bottom: 40px;
+  }
+  &_ttl {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    @include point_mid {
+      font-size: 2.4rem;
+    }
+  }
+  &_link {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    a {
+      color: #f33;
+      word-wrap: break-word;
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+  &_lead {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    @include point_mid {
+      font-size: 1.8rem;
+    }
+  }
+  &_img {
+    display: flex;
+    &_item {
+      &:nth-child(2n) {
+        margin-left: 6%;
+      }
+    }
+    &_head {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+      @include point_mid {
+        font-size: 1.6rem;
+      }
+    }
+    &_body {
+      line-height: 0;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+/*=== header ===*/
+.header {
+  background: #fff;
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  &_inr {
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &_logo {
+    width: 280px;
+    @include point_mid {
+      width: 220px;
+    }
+    a {
+      padding: 8.5px 0;
+      display: block;
+      line-height: 0;
+    }
+  }
+  &_gnav {
+    display: flex;
+    @include point_mid {
+      transition: .3s;
+      display: block;
+      padding: calc(60px + 6vw) 2% 40px;
+      height: 100vh;
+      background: $color_green01;
+      position: absolute;
+      top: -100vh;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: -10;
+      overflow-y: scroll;
+    }
+    &_item {
+      &.sp {
+        display: none;
+        @include point_mid {
+          display: block;
+        }
+      }
+      @include point_mid {
+        margin-bottom: 2vw;
+      }
+      &.close {
+        color: #000;
+        display: block;
+        padding: 12px;
+        border: solid 1px #fff;
+        border-radius: 8px;
+        max-width: 200px;
+        margin: 0 auto;
+        margin-top: 10vw;
+        text-align: center;
+        background: #fff;
+        cursor: pointer;
+        display: none;
+        @include point_mid {
+          display: block;
+        }
+      }
+      a {
+        color: #000;
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        display: block;
+        padding: 11px 16px 6px;
+        display: block;
+        @include point_mid {
+          padding: 16px 16px;
+          border: solid 1px #fff;
+          border-radius: 8px;
+        }
+        &:hover {
+      color: #fff;
+          background: #000;
+          @include point_mid {
+            background : none;
+          }
+        }
+      }
+      i {
+        display: block;
+        font-size: 2.4rem;
+        text-align: center;
+        margin-bottom: 4px;
+        @include point_mid {
+          display: none;
+        }
+      }
+    }
+    &.open {
+      top: 0;
+      &_item {
+        &.sp {
+          display: none;
+          @include point_mid {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* スライダー */
+.works_slider {
+  display: flex;
+  @include point_mid {
+    display: block;
+  }
+  .slider {
+    flex-basis: 80%;
+    width: 80%;
+    @include point_mid {
+      width: 100%;
+    }
+  }
+  .slide-item{
+    line-height: 0;
+    img{
+      margin: 0 auto;
+    }
+    .caption {
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 1.6;
+      text-align: center;
+      margin-top: 0.5em;
+      @include point_mid {
+        font-size: 1.8rem;
+      }
+    }
+  }
+  .thumbnail-list {
+    flex-basis: 18%;
+    width: 18%;
+    margin-left: 2%;
+    @include point_mid {
+      display: flex;
+      width: 100%;
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+  .thumbnail-item {
+    margin-bottom: 20px;
+    position:relative;
+    line-height: 0;
+    cursor:pointer;
+    @include point_mid {
+      margin-bottom: 0;
+      width: calc(92% * 3/1);
+      &:not(:first-child) {
+        margin-left: 4%;
+      }
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transition: .3s opacity linear;
+      border: solid 4px #f33;
+      border-right: solid 4px #000;
+      border-bottom: solid 4px #000;
+      opacity: 0;
+    }
+    &.thumbnail-current::after {
+      opacity: 1;
+    }
+    img {
+      margin: 0 auto;
+    }
+    .span {
+      padding-top: 72%;
+    }
+  }
+}

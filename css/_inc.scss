@@ -1,0 +1,207 @@
+/*==========================================
+変数 inc.scss
+===========================================*/
+$font-color: #000;
+$font01: 'Sawarabi Mincho', sans-serif;
+$font02: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+$font03: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+$point_lrg: 1140px;
+$point_mid: 960px;
+$point_sml: 480px;
+$color_green01: #184621;
+$color_green02: #009a62;
+$img_transform: scale(1.1,1.1);
+$lhR: 1.6;
+$lsR:0.05em;
+$fwB:bold;
+
+/*==========================================
+@mixin inc.scss
+===========================================*/
+//PC用 ブレークポイント
+@mixin point_lrg {
+  @media screen and (max-width:$point_lrg) {
+    @content
+  }
+}
+@mixin point_lrg02 {
+  @media screen and (max-width:$point_lrg02) {
+    @content
+  }
+}
+//中間用 ブレークポイント
+@mixin point_mid {
+  @media screen and (max-width:$point_mid) {
+    @content
+  }
+}
+//スマホ用 ブレークポイント
+@mixin point_sml {
+  @media screen and (max-width:$point_sml) {
+    @content
+  }
+}
+
+//矢印
+@mixin arrow($mar: 0px 0px 0px auto,$maw: 140px,$arrow-color: #fff,$arrow-right: 0){
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: $maw;
+  margin: $mar;
+  &::before,&::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: $arrow-right;
+    border-bottom: solid 1px $arrow-color;
+    margin: auto;
+    height: 0;
+    transition: .3s;
+  }
+  &::before {
+    width: 22px;
+  }
+  &::after {
+    transform: rotate(45deg);
+    width: 6px;
+    transform-origin: right;
+  }
+}
+//View Moreボタン
+@mixin cmn_btn(
+  $btn_mar: 0px auto,
+  $btn_pad: 20px 0,
+  $btn_maw: 270px,
+  $btn_fc: #fff,
+  $btn_fz: 1.4rem,
+  $btn_border: $color-blue,
+  $btn_bg: $color-blue){
+  display: block;
+  text-align: center;
+  a {
+    color: $btn_fc;
+    font-size: $btn_fz;
+    letter-spacing: 0.05em;
+    display: block;
+    border: solid 1px $btn_border;
+    position: relative;
+    width: 100%;
+    max-width: $btn_maw;
+    margin: $btn_mar;
+    padding: $btn_pad;
+    background: $btn_bg;
+    &::before,&::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 8%;
+      border-bottom: solid 1px $btn_fc;
+      margin: auto;
+      height: 0;
+    }
+    &::before {
+      width: 22px;
+    }
+    &::after {
+      transform: rotate(45deg);
+      width: 6px;
+      transform-origin: right;
+    }
+    &:hover {
+      color: $btn_bg;
+      background: $btn_fc; 
+      &::before,&::after {
+        border-bottom: solid 1px $btn_bg;
+      }
+    }
+  }
+}
+
+//index等　中見出し
+@mixin sec_ttl($fc:$color-blue,$fz:3.6rem,$ls:0.2em,$fw:500){
+  color: $fc;
+  font-size: $fz;
+  letter-spacing: $ls;
+  font-weight: $fw;
+  text-align: center;
+  @include point_mid {
+    font-size: 3rem;
+  }
+}
+//タイトルブロック（背景画像、タイトル右寄せ）
+@mixin content-head{
+	min-height: 470px;
+	background-repeat: no-repeat;
+	background-position: top center;
+	padding: 70px 0 0;
+	@include point_sml{
+		min-height: 350px;
+	}
+}
+@mixin content-headTtl($ch-ttlBg:$color-blue,$ch-ttlBg-op:0.3){
+	display: block;
+	background: rgba($ch-ttlBg,$ch-ttlBg-op);
+	color: #fff;
+	letter-spacing: 0.05em;
+	max-width: 522px;
+	width: 100%;
+	margin: 0 0 0 auto;
+	text-align: right;
+	padding: 35px 3.5%;
+}
+@mixin content-headTtl-en($ch-ttlE-sz:6rem, $ch-ttl-line:#fff){
+	font-size: $ch-ttlE-sz;
+	&::after{
+		content: "";
+		display: block;
+		width: 100%;
+		max-width: 383px;
+		height: 1px;
+		background: $ch-ttl-line;
+		margin: 15px 0 15px auto;
+	}
+}
+@mixin content-headTtl-ja($ch-ttlJ-sz:2.4rem){
+	font-size: $ch-ttlJ-sz;
+	margin: 0;
+	@include point_sml{
+		font-size: 1.8rem;
+	}
+}
+
+//画像トリミング
+@mixin trim-img($trim-paddingT:56.25% ,$trim-height:100%, $trim-width:auto, $trim-Mwidth:inherit){
+ position: relative;
+ height: 0;
+ overflow: hidden;
+ padding-top: $trim-paddingT;
+	img{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+    display: block;
+		height: $trim-height;
+		width: $trim-width;
+		max-width:$trim-Mwidth;
+	}
+}
+
+//ホバー
+@mixin hover($hover-border:#fff){
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    border-bottom: solid 1px $hover-border;
+  }
+  &:hover::before {
+    right: 0;
+  }
+}
